@@ -25,8 +25,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (!isPossessing || (possessedObject != null && possessedObject.tag == "Moveable"))
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+        
     }
 
     void FixedUpdate()
@@ -55,7 +59,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Obstical")
+        if (collision.gameObject.tag == "Possessable")
+        {
+            possessedObject = collision.gameObject;
+        }
+        if (collision.gameObject.tag == "Moveable")
         {
             possessedObject = collision.gameObject;
         }
