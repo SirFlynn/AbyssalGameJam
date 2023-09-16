@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public float time;
+    private float timeScore;
+
     public GameObject[] targets;
     private Vector3 currentTarget;
     NavMeshAgent agent;
@@ -17,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
         agent.updateUpAxis = false;
 
         currentTarget = targets[0].transform.position;
+
+        timeScore = time;
     }
 
     // Update is called once per frame
@@ -35,14 +40,24 @@ public class CharacterMovement : MonoBehaviour
         //If both positions are the same, move to the next one in the array
         if (currentPos == targetPos)
         {
-            GameObject temp = targets[0];
-            for (int i = 0; i < targets.Length - 1; i++)
+            //Timer
+            if (time > 0)
             {
-                targets[i] = targets[i + 1];
+                time -= Time.deltaTime;
             }
-            targets[targets.Length - 1] = temp;
+            else
+            {
+                GameObject temp = targets[0];
+                for (int i = 0; i < targets.Length - 1; i++)
+                {
+                    targets[i] = targets[i + 1];
+                }
+                targets[targets.Length - 1] = temp;
 
-            currentTarget = targets[0].transform.position;
+                currentTarget = targets[0].transform.position;
+
+                time = timeScore;
+            }            
         }
     }
 
@@ -50,4 +65,5 @@ public class CharacterMovement : MonoBehaviour
     {
         agent.SetDestination(currentTarget);
     }
+
 }
