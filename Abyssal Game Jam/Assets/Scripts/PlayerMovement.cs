@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,23 +9,68 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    SpriteRenderer spriteRenderer;
     Vector2 movement;
+    float space;
+
+    GameObject possessedObject;
+    bool isPossessing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       movement.x = Input.GetAxisRaw("Horizontal");
-       movement.y = Input.GetAxisRaw("Vertical");
+        if (!isPossessing || (possessedObject != null && possessedObject.tag == "Moveable"))
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+        
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        if (Input.GetKey(KeyCode.Space) && possessedObject != null && isPossessing == false)
+        {
+            spriteRenderer.enabled = false;
+            gameObject.transform.position = possessedObject.transform.position;
+            isPossessing = true;
+        }
+        else if (Input.GetKey(KeyCode.Space) && isPossessing == true)
+        {
+            spriteRenderer.enabled = true;
+            isPossessing = false;
+        }
+
+        if (isPossessing)
+        {
+            possessedObject.transform.position = gameObject.transform.position;
+            gameObject.transform.position = possessedObject.transform.position;
+        }
+    }
+
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Possessable")
+        {
+            possessedObject = collision.gameObject;
+        }
+        if (collision.gameObject.tag == "Moveable")
+        {
+            possessedObject = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        possessedObject = null;
     }
 }
