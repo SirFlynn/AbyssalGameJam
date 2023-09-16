@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3045829136319448119}
   - component: {fileID: 4728823016387910818}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0fce97f9981037747ae3d9efd4a79136, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 631633ac27c470040874e6a94d068155, type: 3}
   m_Color: {r: 0.8254717, g: 1, b: 0.97179735, a: 1}
   m_FlipX: 0
   m_FlipY: 0
