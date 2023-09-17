@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance { get; private set; }
+
+    bool isGameOver = false;
+    bool playerWin = false;
+    bool pausedGame = false;
+
+    public bool IsGameOver()
     {
-        
+        return isGameOver;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameOver(bool flag)
     {
-        
+        isGameOver = flag;
+    }
+
+    public bool HasPlayerWon()
+    {
+        return playerWin;
+    }
+
+    public bool IsPaused()
+    {
+        return pausedGame;
+    }
+
+    public void PauseGame(bool flag)
+    {
+        pausedGame = flag;
     }
 }
