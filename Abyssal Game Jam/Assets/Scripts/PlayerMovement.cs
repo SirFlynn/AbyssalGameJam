@@ -5,21 +5,22 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    PlayerData playerData;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
 
     SpriteRenderer spriteRenderer;
     Vector2 movement;
-    float space;
 
     GameObject possessedObject;
-    bool isPossessing = false;
+    [System.NonSerialized] public bool isPossessing = false;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerData = GetComponent<PlayerData>();
     }
 
     // Update is called once per frame
