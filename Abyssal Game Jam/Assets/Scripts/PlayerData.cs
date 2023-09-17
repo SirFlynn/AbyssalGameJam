@@ -9,6 +9,7 @@ public class PlayerData : MonoBehaviour
     int hauntingMeter;
     float cooldownTimer;
     [System.NonSerialized] public bool isHaunting = false;
+    [System.NonSerialized] public GameObject possessedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,15 @@ public class PlayerData : MonoBehaviour
         else
         {
             isHaunting = false;
+        }
+
+        if (playerMovement.isPossessing)
+        {
+            possessedObject = playerMovement.possessedObject;
+        }
+        else
+        {
+            possessedObject = null;
         }
     }
 

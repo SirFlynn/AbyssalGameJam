@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Vector2 movement;
 
-    GameObject possessedObject;
+    [System.NonSerialized] public GameObject possessedObject;
     [System.NonSerialized] public bool isPossessing = false;
 
     // Start is called before the first frame update
