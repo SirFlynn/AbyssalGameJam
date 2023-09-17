@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
 
     CharacterData characterData;
 
-    public GameObject[] targets;
+    public List<GameObject> targets;
     private Vector3 currentTarget;
     NavMeshAgent agent;
     float orignalSpeed;
@@ -67,6 +67,12 @@ public class CharacterMovement : MonoBehaviour
             {
                 waitInSpot -= Time.deltaTime;
             }
+            
+            //else if (characterData.GetType() == true)
+            //{
+
+            //}
+
             else
             {
                 GoToNextSpot();
@@ -76,14 +82,24 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void MakeTarget(GameObject go)
+    {
+        currentTarget = go.transform.position;
+    }
+
+    public void ResetTarget()
+    {
+        currentTarget = targets[0].transform.position;
+    }
+
     public void GoToNextSpot()
     {
         GameObject temp = targets[0];
-        for (int i = 0; i < targets.Length - 1; i++)
+        for (int i = 0; i < targets.Count - 1; i++)
         {
             targets[i] = targets[i + 1];
         }
-        targets[targets.Length - 1] = temp;
+        targets[targets.Count - 1] = temp;
 
         currentTarget = targets[0].transform.position;
     }

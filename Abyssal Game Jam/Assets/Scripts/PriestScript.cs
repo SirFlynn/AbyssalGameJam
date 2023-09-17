@@ -5,6 +5,13 @@ using UnityEngine;
 public class PriestScript : CharacterData
 {
     public float holyRadiance;
+    public bool isExorcising;
+
+    public float exorcising;
+    private float timeExorcising;
+
+    public float timeToSetUpRelics;
+    private float timeLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +22,8 @@ public class PriestScript : CharacterData
 
         characterMovement = GetComponent<CharacterMovement>();
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        timeExorcising = exorcising;
     }
 
     // Update is called once per frame
@@ -33,8 +42,36 @@ public class PriestScript : CharacterData
             player.RemoveFromHaunt(1);
         }
 
+        if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
+        {
+            fearMeter -= 1;
+            //fearMeterObject.transform.localScale = new Vector3(fearMeter, 1, 1);
+            isScared = true;
 
+            characterMovement.MakeTarget(player.possessedObject);
+        }        
 
+        if(isScared && Vector2.Distance(player.possessedObject.transform.position, transform.position) <= 1)
+        {
+            isExorcising = true;
+        }
 
+        if (isExorcising)
+        {
+            //Timer
+            if (exorcising > 0)
+            {
+                exorcising -= Time.deltaTime;
+            }
+            else
+            {
+                characterMovement.ResetTarget();
+                exorcising = timeExorcising;
+                isScared = false;
+            }
+        }
+
+        
+        
     }
 }
