@@ -9,7 +9,6 @@ public enum MenuState
     Playing,
     Pause,
     Main,
-    Settings,
     Credits,
     WinScreen,
     LoseScreen
@@ -24,7 +23,6 @@ public class MenuManager : MonoBehaviour
     [Header("Menus")]
     public GameObject pauseMenu = null;
     public GameObject mainMenu = null;
-    public GameObject settingsMenu = null;
     public GameObject creditsMenu = null;
     public GameObject winMenu = null;
     public GameObject loseMenu = null;
@@ -212,9 +210,6 @@ public class MenuManager : MonoBehaviour
             case MenuState.Main:
                 currentMenu = mainMenu;
                 break;
-            case MenuState.Settings:
-                currentMenu = settingsMenu;
-                break;
             case MenuState.Credits:
                 currentMenu = creditsMenu;
                 break;
@@ -257,7 +252,6 @@ public class MenuManager : MonoBehaviour
                 break;
             case MenuState.Main:
                 break;
-            case MenuState.Settings:
                 if (GameManager.Instance == null)
                 {
                     // if null means we are in the main menu scene
