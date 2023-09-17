@@ -68,10 +68,16 @@ public class CharacterMovement : MonoBehaviour
                 waitInSpot -= Time.deltaTime;
             }
             
-            //else if (characterData.GetType() == true)
-            //{
-
-            //}
+            else if (characterData.GetType() == typeof(PriestScript))
+            {
+                PriestScript priest = (PriestScript)characterData;
+                GoToNextSpot();
+                priest.PlaceRelic();
+                if (targets.Count != 0)
+                {
+                    targets.RemoveAt(targets.Count - 1);
+                }                
+            }
 
             else
             {
@@ -94,14 +100,18 @@ public class CharacterMovement : MonoBehaviour
 
     public void GoToNextSpot()
     {
-        GameObject temp = targets[0];
-        for (int i = 0; i < targets.Count - 1; i++)
+        if (targets.Count != 0)
         {
-            targets[i] = targets[i + 1];
-        }
-        targets[targets.Count - 1] = temp;
+            GameObject temp = targets[0];
+            for (int i = 0; i < targets.Count - 1; i++)
+            {
+                targets[i] = targets[i + 1];
+            }
+            targets[targets.Count - 1] = temp;
 
-        currentTarget = targets[0].transform.position;
+            currentTarget = targets[0].transform.position;
+        }
+        
     }
 
     void SetAgentPosition()
