@@ -1485,6 +1485,18 @@ PrefabInstance:
       propertyPath: targets.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
+      propertyPath: targets.Array.data[0]
+      value: 
+      objectReference: {fileID: 403605553}
+    - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
+      propertyPath: targets.Array.data[1]
+      value: 
+      objectReference: {fileID: 831811514}
+    - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
+      propertyPath: targets.Array.data[2]
+      value: 
+      objectReference: {fileID: 1616685434}
     - target: {fileID: 4728823016387910818, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1493,6 +1505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Priest
       objectReference: {fileID: 0}
+    - target: {fileID: 8904968850798135672, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
+      propertyPath: relic
+      value: 
+      objectReference: {fileID: 4988969675392589327, guid: b9cefab32c65ec04086995191add9231, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18477,6 +18493,10 @@ PrefabInstance:
     - target: {fileID: 7371904157995490803, guid: 36faa4f703c555a48af726c25082e70d, type: 3}
       propertyPath: m_Name
       value: NPC_Child
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371904157995490803, guid: 36faa4f703c555a48af726c25082e70d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8703305175971050443, guid: 36faa4f703c555a48af726c25082e70d, type: 3}
       propertyPath: m_Speed

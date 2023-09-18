@@ -139,6 +139,11 @@ MonoBehaviour:
   fearMeterObject: {fileID: 0}
   fearCooldown: 10
   playerAwarenessDistance: 10
+  relic: {fileID: 0}
+  holyRadiance: 1
+  isExorcising: 0
+  exorcising: 3
+  timeToSetUpRelics: 10
 --- !u!1 &7371904157995490803
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PriestScript : CharacterData
 {
+    [SerializeField] GameObject relic;
+
     public float holyRadiance;
     public bool isExorcising;
 
@@ -24,6 +26,7 @@ public class PriestScript : CharacterData
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
         timeExorcising = exorcising;
+        characterMovement.waitInSpot = timeToSetUpRelics;
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class PriestScript : CharacterData
         if(isScared && Vector2.Distance(player.possessedObject.transform.position, transform.position) <= 1)
         {
             isExorcising = true;
+            characterMovement.enabled = false;
         }
 
         if (isExorcising)
@@ -68,10 +72,19 @@ public class PriestScript : CharacterData
                 characterMovement.ResetTarget();
                 exorcising = timeExorcising;
                 isScared = false;
+                characterMovement.enabled = true;
             }
         }
 
+        if (characterMovement.targets.Count == 0)
+        {
+            //lose
+        }
         
-        
+    }
+
+    public void PlaceRelic()
+    {
+        Instantiate(relic, transform.position, Quaternion.identity);
     }
 }
