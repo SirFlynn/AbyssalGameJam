@@ -49,6 +49,18 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (playerWin)
+            {
+                MenuManager.instance.SetState(MenuState.WinScreen);
+            }
+            else
+            {
+                MenuManager.instance.SetState(MenuState.LoseScreen);
+            }
+            
+        }
         
     }
 

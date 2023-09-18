@@ -38,32 +38,37 @@ public class CharacterData : MonoBehaviour
 
     void Update()
     {
-        Vector2 enemyToPlayerVector = player.gameObject.transform.position - transform.position;
-        directionToPlayer = enemyToPlayerVector.normalized;
 
-        if(enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
+        if (fearMeter != leaveValue)
         {
-            fearMeter += 1;
-            float FearValue = (float)fearMeter / (float)leaveValue;
-            fearMetreGUI.SetBars(FearValue);
 
-            isScared = true;
-            AudioManager.Instance.PlayRunAway();
-            characterMovement.GoToNextSpot();
-        }
 
-        //cooldown timer
-        if (fearCooldown > 0 && isScared == true)
-        {
-            fearCooldown -= Time.deltaTime;
+            Vector2 enemyToPlayerVector = player.gameObject.transform.position - transform.position;
+            directionToPlayer = enemyToPlayerVector.normalized;
+
+            if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
+            {
+                fearMeter += 1;
+                float FearValue = (float)fearMeter / (float)leaveValue;
+                fearMetreGUI.SetBars(FearValue);
+
+                isScared = true;
+                AudioManager.Instance.PlayRunAway();
+                characterMovement.GoToNextSpot();
+            }
+
+            //cooldown timer
+            if (fearCooldown > 0 && isScared == true)
+            {
+                fearCooldown -= Time.deltaTime;
+            }
+            else
+            {
+                fearCooldown = fearTimer;
+                isScared = false;
+            }
         }
         else
-        {
-            fearCooldown = fearTimer;
-            isScared = false;
-        }
-
-        if(fearMeter == leaveValue)
         {
             //turns off GUI for fear metre
             fearMetreGUI.gameObject.SetActive(false);
