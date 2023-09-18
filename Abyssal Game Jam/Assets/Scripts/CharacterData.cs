@@ -11,6 +11,8 @@ public class CharacterData : MonoBehaviour
     public GameObject leavepointObject;
     [System.NonSerialized] public bool isScared = false;
 
+    public MetresScript fearMetreGUI;
+
     public float fearCooldown;
     protected float fearTimer;
 
@@ -25,6 +27,8 @@ public class CharacterData : MonoBehaviour
 
     void Start()
     {
+        fearMeter = 0;
+
         player = FindAnyObjectByType<PlayerData>().GetComponent<PlayerData>();
         fearTimer = fearCooldown;
         //fearMeterObject.transform.localScale = new Vector3(fearMeter,1,1);
@@ -41,7 +45,9 @@ public class CharacterData : MonoBehaviour
         if(enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
         {
             fearMeter += 1;
-            //fearMeterObject.transform.localScale = new Vector3(fearMeter, 1, 1);
+            float FearValue = fearMeter / leaveValue;
+            fearMetreGUI.SetBars(FearValue);
+
             isScared = true;
             AudioManager.Instance.PlayRunAway();
             characterMovement.GoToNextSpot();
@@ -60,6 +66,8 @@ public class CharacterData : MonoBehaviour
 
         if(fearMeter == leaveValue)
         {
+            //turns off GUI for fear metre
+            fearMetreGUI.gameObject.SetActive(false);
             characterMovement.MakeTarget(leavepointObject);
         }
     }
