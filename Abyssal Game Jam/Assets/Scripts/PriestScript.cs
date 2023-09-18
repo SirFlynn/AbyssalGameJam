@@ -78,7 +78,7 @@ public class PriestScript : CharacterData
 
         if (characterMovement.targets.Count == 0)
         {
-            //lose
+            GameManager.Instance.GameOver(true);   
         }
         
     }
