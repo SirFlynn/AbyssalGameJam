@@ -8,6 +8,7 @@ public class CharacterData : MonoBehaviour
     public int fearMeter;
     public int leaveValue;
     public GameObject fearMeterObject;
+    public GameObject leavepointObject;
     [System.NonSerialized] public bool isScared = false;
 
     public float fearCooldown;
@@ -55,6 +56,11 @@ public class CharacterData : MonoBehaviour
         {
             fearCooldown = fearTimer;
             isScared = false;
+        }
+
+        if(fearMeter == leaveValue)
+        {
+            characterMovement.MakeTarget(leavepointObject);
         }
     }
 }
