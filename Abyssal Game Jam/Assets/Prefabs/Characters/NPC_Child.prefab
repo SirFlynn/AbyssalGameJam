@@ -139,8 +139,9 @@ MonoBehaviour:
   leaveValue: 0
   fearMeterObject: {fileID: 0}
   leavepointObject: {fileID: 0}
+  fearMetreGUI: {fileID: 0}
   fearCooldown: 3
-  playerAwarenessDistance: 2
+  playerAwarenessDistance: 10
 --- !u!1 &7371904157995490803
 GameObject:
   m_ObjectHideFlags: 0

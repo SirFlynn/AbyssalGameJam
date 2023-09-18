@@ -7,7 +7,7 @@ public class CharacterData : MonoBehaviour
 {
     public int fearMeter;
     public int leaveValue;
-    public GameObject fearMeterObject;
+
     public GameObject leavepointObject;
     [System.NonSerialized] public bool isScared = false;
 

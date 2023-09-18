@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameObject priest;
+    public GameObject priestMetre;
     int spawnLevel = 13;
     bool isPriestThere = false;
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
                 {
                     SpawnPriest();
                     isPriestThere = true;
+                    priestMetre.SetActive(true);
                 }
 
                 if (value == leave)
