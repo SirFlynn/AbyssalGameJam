@@ -47,8 +47,9 @@ public class PriestScript : CharacterData
 
         if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
         {
-            fearMeter -= 1;
-            //fearMeterObject.transform.localScale = new Vector3(fearMeter, 1, 1);
+            fearMeter += 1;
+            float FearValue = (float)fearMeter / (float)leaveValue;
+            fearMetreGUI.SetBars(FearValue);
             isScared = true;
 
             characterMovement.MakeTarget(player.possessedObject);
