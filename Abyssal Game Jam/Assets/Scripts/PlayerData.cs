@@ -26,8 +26,11 @@ public class PlayerData : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && playerMovement.isPossessing)
         {
-            isHaunting = true;
-            playerMovement.animator.SetBool("IsHaunt", true);
+            isHaunting = true; 
+            if (playerMovement.animator != null)
+            {
+                playerMovement.animator.SetBool("IsHaunt", true);
+            }
         }
         else
         {

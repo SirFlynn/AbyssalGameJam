@@ -139,8 +139,9 @@ MonoBehaviour:
   leaveValue: 0
   fearMeterObject: {fileID: 0}
   leavepointObject: {fileID: 0}
+  fearMetreGUI: {fileID: 0}
   fearCooldown: 10
-  playerAwarenessDistance: 10
+  playerAwarenessDistance: 100
   relic: {fileID: 4988969675392589327, guid: b9cefab32c65ec04086995191add9231, type: 3}
   holyRadiance: 1
   isExorcising: 0

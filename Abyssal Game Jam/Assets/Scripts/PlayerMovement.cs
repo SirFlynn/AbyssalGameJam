@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
 
     [System.NonSerialized] public GameObject possessedObject;
+    [System.NonSerialized] public BoxCollider2D possessedCollider;
     [System.NonSerialized] public bool isPossessing = false;
     [System.NonSerialized] public Animator animator;
 
@@ -37,11 +38,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-      
 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-        if (Input.GetKey(KeyCode.Space) && possessedObject != null && isPossessing == false)
+        if (isPossessing && possessedCollider.IsTouchingLayers())
+        {
+            rb.velocity = -movement;
+        }       
+
+        if (Input.GetKey(KeyCode.Space) && possessedObject != null && !isPossessing)
         {
             AudioManager.Instance.PlayPossessing();
             spriteRenderer.enabled = false;
@@ -68,14 +73,20 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Possessable" || collision.gameObject.tag == "Moveable")
+        if ((collision.gameObject.tag == "Possessable" || collision.gameObject.tag == "Moveable") && !isPossessing)
         {
             possessedObject = collision.gameObject;
+            possessedCollider = possessedObject.GetComponent<BoxCollider2D>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        possessedObject = null;
+        if (!isPossessing)
+        {
+            possessedObject = null;
+            possessedCollider = null;
+        }
+        
     }
 }
