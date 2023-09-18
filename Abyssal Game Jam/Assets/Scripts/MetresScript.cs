@@ -17,6 +17,10 @@ public class MetresScript : MonoBehaviour
         {
             image.sprite = scaredSkull;
         }
+        if (image != null && slider.value <= 0.5)
+        {
+            image.sprite = scaredSkull;
+        }
     }
 
 }
