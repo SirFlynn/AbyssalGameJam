@@ -66,6 +66,10 @@ public class PriestScript : CharacterData
             if (exorcising > 0)
             {
                 exorcising -= Time.deltaTime;
+                if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting)
+                {
+                    player.RemoveFromHaunt(1);
+                }
             }
             else
             {
@@ -85,7 +89,8 @@ public class PriestScript : CharacterData
 
     public void PlaceRelic()
     {
-        Instantiate(relic, transform.position, Quaternion.identity);
+        GameObject placeRelic = Instantiate(relic, transform.position, Quaternion.identity);
+        placeRelic.transform.localScale *= 3;
         AudioManager.Instance.PlayHolySFX();
     }
 }

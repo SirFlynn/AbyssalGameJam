@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fearMeter: 8
+  leaveValue: 0
   fearMeterObject: {fileID: 0}
+  leavepointObject: {fileID: 0}
   fearCooldown: 3
   playerAwarenessDistance: 5
 --- !u!114 &6166087004367662251

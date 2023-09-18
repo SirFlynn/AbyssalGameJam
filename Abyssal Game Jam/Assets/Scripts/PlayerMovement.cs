@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+      
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         if (Input.GetKey(KeyCode.Space) && possessedObject != null && isPossessing == false)
@@ -66,11 +68,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Possessable")
-        {
-            possessedObject = collision.gameObject;
-        }
-        if (collision.gameObject.tag == "Moveable")
+        if (collision.gameObject.tag == "Possessable" || collision.gameObject.tag == "Moveable")
         {
             possessedObject = collision.gameObject;
         }

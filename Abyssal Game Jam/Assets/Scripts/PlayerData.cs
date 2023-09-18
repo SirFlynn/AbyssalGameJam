@@ -7,7 +7,8 @@ public class PlayerData : MonoBehaviour
     PlayerMovement playerMovement;
 
     [System.NonSerialized] public int hauntingMeter;
-    float cooldownTimer;
+    public float cooldownTimer = 10;
+    float timer;
     [System.NonSerialized] public bool isHaunting = false;
     [System.NonSerialized] public GameObject possessedObject;
 
@@ -15,6 +16,7 @@ public class PlayerData : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        timer = cooldownTimer;
     }
 
     // Update is called once per frame
@@ -42,6 +44,18 @@ public class PlayerData : MonoBehaviour
         {
             possessedObject = null;
         }
+
+        //cooldown timer
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            AddToHaunt(1);
+            cooldownTimer = timer;
+        }
+
     }
 
     public void AddToHaunt(int value)
