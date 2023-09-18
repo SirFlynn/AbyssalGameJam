@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     PlayerMovement playerMovement;
+    public MetresScript metresScript;
 
-    [System.NonSerialized] public int hauntingMeter;
+    public int hauntingMeter;
+    int hauntingMax = 10;
     public float cooldownTimer = 10;
     float timer;
     [System.NonSerialized] public bool isHaunting = false;
@@ -60,11 +62,22 @@ public class PlayerData : MonoBehaviour
 
     public void AddToHaunt(int value)
     {
-        hauntingMeter += value;
+        if (hauntingMeter < hauntingMax)
+        {
+            hauntingMeter += value;
+            float hauntValue = (float)hauntingMeter / (float)hauntingMax;
+            metresScript.SetBars(hauntValue);
+        }
+        
     }
 
     public void RemoveFromHaunt(int value)
     {
-        hauntingMeter -= value;
+        if (hauntingMeter > 0)
+        {
+            hauntingMeter -= value;
+            float hauntValue = (float)hauntingMeter / (float)hauntingMax;
+            metresScript.SetBars(hauntValue);
+        }
     }
 }

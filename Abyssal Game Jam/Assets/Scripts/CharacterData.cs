@@ -31,7 +31,6 @@ public class CharacterData : MonoBehaviour
 
         player = FindAnyObjectByType<PlayerData>().GetComponent<PlayerData>();
         fearTimer = fearCooldown;
-        //fearMeterObject.transform.localScale = new Vector3(fearMeter,1,1);
 
         characterMovement = GetComponent<CharacterMovement>();
         agent = GetComponent<NavMeshAgent>();
@@ -45,7 +44,7 @@ public class CharacterData : MonoBehaviour
         if(enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
         {
             fearMeter += 1;
-            float FearValue = fearMeter / leaveValue;
+            float FearValue = (float)fearMeter / (float)leaveValue;
             fearMetreGUI.SetBars(FearValue);
 
             isScared = true;
