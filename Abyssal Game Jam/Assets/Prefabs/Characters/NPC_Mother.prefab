@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3045829136319448119}
   - component: {fileID: 4728823016387910818}
   - component: {fileID: 6094678904859809564}
+  - component: {fileID: 9200976078269181696}
+  - component: {fileID: 6166087004367662251}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3a8427941ca67b7419804a420f569a03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,6 +109,36 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &9200976078269181696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662476439235134945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78854cc83309c824fa5b044ce3d975b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fearMeter: 8
+  fearMeterObject: {fileID: 0}
+  fearCooldown: 3
+  playerAwarenessDistance: 5
+--- !u!114 &6166087004367662251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662476439235134945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a769125595b8a3c47b4e7b812a74c8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitInSpot: 0
+  targets: []
 --- !u!1 &7371904157995490803
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +165,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3045829136319448119}
