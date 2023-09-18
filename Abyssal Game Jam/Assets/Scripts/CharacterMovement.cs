@@ -95,6 +95,11 @@ public class CharacterMovement : MonoBehaviour
                 }                
             }
 
+            else if (characterData.fearMeter == characterData.leaveValue)
+            {
+                gameObject.SetActive(false);
+            }
+
             else
             {
                 GoToNextSpot();

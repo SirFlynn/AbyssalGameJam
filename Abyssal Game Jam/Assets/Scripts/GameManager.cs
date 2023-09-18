@@ -23,18 +23,28 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
-        if (!isPriestThere)
+        if (!isGameOver)
         {
-            int value = 0;
-            foreach (CharacterData cd in characters)
+            if (!isPriestThere)
             {
-                value += cd.fearMeter;
-            }
-            if (value >= spawnLevel)
-            {
-                SpawnPriest();
-                isPriestThere = true;
+                int value = 0;
+                int leave = 0;
+                foreach (CharacterData cd in characters)
+                {
+                    value += cd.fearMeter;
+                    leave += cd.leaveValue;
+                }
+                if (value >= spawnLevel)
+                {
+                    SpawnPriest();
+                    isPriestThere = true;
+                }
+
+                if (value == leave)
+                {
+                    playerWin = true;
+                    GameOver(true);
+                }
             }
         }
         
