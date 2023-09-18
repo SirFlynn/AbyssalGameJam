@@ -44,9 +44,15 @@ public class PlayerMovement : MonoBehaviour
         if (isPossessing && possessedCollider.IsTouchingLayers())
         {
             rb.velocity = -movement;
-        }       
+        }
 
-        if (Input.GetKey(KeyCode.Space) && possessedObject != null && !isPossessing)
+        if (isPossessing)
+        {
+            possessedObject.transform.position = gameObject.transform.position;
+            gameObject.transform.position = possessedObject.transform.position;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && possessedObject != null && !isPossessing)
         {
             AudioManager.Instance.PlayPossessing();
             spriteRenderer.enabled = false;
@@ -56,18 +62,14 @@ public class PlayerMovement : MonoBehaviour
             animator = possessedObject.GetComponent<Animator>();
 
         }
-        else if (Input.GetKey(KeyCode.Space) && isPossessing == true)
+        else if (Input.GetKeyDown(KeyCode.Space) && isPossessing == true)
         {
             spriteRenderer.enabled = true;
             isPossessing = false;
             animator = null;
         }
 
-        if (isPossessing)
-        {
-            possessedObject.transform.position = gameObject.transform.position;
-            gameObject.transform.position = possessedObject.transform.position;
-        }
+        
     }
 
     

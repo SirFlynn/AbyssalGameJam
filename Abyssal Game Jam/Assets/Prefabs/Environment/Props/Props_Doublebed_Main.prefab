@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1758581369726677505}
   - component: {fileID: 6917561484900975994}
   - component: {fileID: 3338289207871860265}
+  - component: {fileID: 3959222159900632883}
   m_Layer: 0
   m_Name: Props_Doublebed_Main
   m_TagString: Moveable
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3957515, y: 2.477876}
   m_EdgeRadius: 0
+--- !u!208 &3959222159900632883
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5099102544226995490}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 1.25, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
