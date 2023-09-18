@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class CharacterData : MonoBehaviour
 {
     public int fearMeter;
+    public int leaveValue;
     public GameObject fearMeterObject;
     [System.NonSerialized] public bool isScared = false;
 
@@ -15,7 +16,7 @@ public class CharacterData : MonoBehaviour
     protected NavMeshAgent agent;
     protected CharacterMovement characterMovement;
 
-    protected Vector2 directionToPlayer;
+    [System.NonSerialized] public Vector2 directionToPlayer;
     
     [SerializeField] protected float playerAwarenessDistance;
 
@@ -38,10 +39,10 @@ public class CharacterData : MonoBehaviour
 
         if(enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
         {
-            fearMeter -= 1;
+            fearMeter += 1;
             //fearMeterObject.transform.localScale = new Vector3(fearMeter, 1, 1);
             isScared = true;
-
+            AudioManager.Instance.PlayRunAway();
             characterMovement.GoToNextSpot();
         }
 

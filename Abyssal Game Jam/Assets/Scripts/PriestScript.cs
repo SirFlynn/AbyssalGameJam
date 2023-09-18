@@ -86,5 +86,6 @@ public class PriestScript : CharacterData
     public void PlaceRelic()
     {
         Instantiate(relic, transform.position, Quaternion.identity);
+        AudioManager.Instance.PlayHolySFX();
     }
 }

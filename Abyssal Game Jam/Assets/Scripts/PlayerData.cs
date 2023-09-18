@@ -6,7 +6,7 @@ public class PlayerData : MonoBehaviour
 {
     PlayerMovement playerMovement;
 
-    int hauntingMeter;
+    [System.NonSerialized] public int hauntingMeter;
     float cooldownTimer;
     [System.NonSerialized] public bool isHaunting = false;
     [System.NonSerialized] public GameObject possessedObject;

@@ -40,9 +40,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && possessedObject != null && isPossessing == false)
         {
+            AudioManager.Instance.PlayPossessing();
             spriteRenderer.enabled = false;
             gameObject.transform.position = possessedObject.transform.position;
             isPossessing = true;
+            rb.velocity = Vector2.zero;
         }
         else if (Input.GetKey(KeyCode.Space) && isPossessing == true)
         {
