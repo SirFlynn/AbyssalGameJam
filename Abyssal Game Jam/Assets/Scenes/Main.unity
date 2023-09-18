@@ -1375,20 +1375,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
       propertyPath: targets.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
       propertyPath: targets.Array.data[0]
       value: 
-      objectReference: {fileID: 1765604878}
+      objectReference: {fileID: 831811514}
     - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
       propertyPath: targets.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1859292955}
     - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
       propertyPath: targets.Array.data[2]
       value: 
-      objectReference: {fileID: 831811514}
+      objectReference: {fileID: 1616685434}
     - target: {fileID: 2673613138651984385, guid: df95ce5e0cdcec240bfe879e3f0f416b, type: 3}
       propertyPath: targets.Array.data[3]
       value: 
@@ -2424,6 +2424,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 156243159}
+  image: {fileID: 355935354}
+  normalSkull: {fileID: 21300000, guid: 99872bba6da51824098501f612734bac, type: 3}
+  scaredSkull: {fileID: 21300000, guid: c7131e62837011649b0594656a4a61b8, type: 3}
 --- !u!114 &156243159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2759,7 +2762,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 698965141}
+    m_TransformParent: {fileID: 1525017859}
     m_Modifications:
     - target: {fileID: 2280849547629695738, guid: 8c53100ec55552f4494540218b1549a9, type: 3}
       propertyPath: m_Name
@@ -3228,7 +3231,6 @@ Transform:
   - {fileID: 1471913100}
   - {fileID: 1209084478}
   - {fileID: 1382710573}
-  - {fileID: 698965141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &211686858
@@ -4971,6 +4973,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 323439304}
+  image: {fileID: 0}
+  normalSkull: {fileID: 0}
+  scaredSkull: {fileID: 0}
 --- !u!114 &323439304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11208,6 +11213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 664693293}
+  image: {fileID: 613675581}
+  normalSkull: {fileID: 21300000, guid: 99872bba6da51824098501f612734bac, type: 3}
+  scaredSkull: {fileID: 21300000, guid: c7131e62837011649b0594656a4a61b8, type: 3}
 --- !u!114 &664693293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12195,39 +12203,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8957894435295107518, guid: 483a26e3b2050f04ebe96187ae634a8c, type: 3}
   m_PrefabInstance: {fileID: 698362210}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &698965140
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 698965141}
-  m_Layer: 0
-  m_Name: Props
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &698965141
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698965140}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1766458873}
-  - {fileID: 189645659}
-  m_Father: {fileID: 207268840}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &703804986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20141,6 +20116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1165347162}
+  image: {fileID: 971791844}
+  normalSkull: {fileID: 21300000, guid: 99872bba6da51824098501f612734bac, type: 3}
+  scaredSkull: {fileID: 21300000, guid: c7131e62837011649b0594656a4a61b8, type: 3}
 --- !u!114 &1165347162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26379,6 +26357,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 189645659}
+  - {fileID: 1766458873}
   - {fileID: 2139952952}
   - {fileID: 2106056244}
   - {fileID: 799030889}
@@ -27132,6 +27112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1567501226}
+  image: {fileID: 1881102869}
+  normalSkull: {fileID: 21300000, guid: 99872bba6da51824098501f612734bac, type: 3}
+  scaredSkull: {fileID: 21300000, guid: c7131e62837011649b0594656a4a61b8, type: 3}
 --- !u!1001 &1567679565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29949,7 +29932,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 698965141}
+    m_TransformParent: {fileID: 1525017859}
     m_Modifications:
     - target: {fileID: 2280849547629695738, guid: 8c53100ec55552f4494540218b1549a9, type: 3}
       propertyPath: m_Name

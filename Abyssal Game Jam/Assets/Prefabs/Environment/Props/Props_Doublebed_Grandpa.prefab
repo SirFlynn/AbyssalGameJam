@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8311988807073361870}
   - component: {fileID: 7284417638090460911}
   - component: {fileID: 8245903118244879278}
+  - component: {fileID: 7322961405293578189}
   m_Layer: 0
   m_Name: Props_Doublebed_Grandpa
   m_TagString: Moveable
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4293709, y: 2.4946854}
   m_EdgeRadius: 0
+--- !u!208 &7322961405293578189
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114771894978980376}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 1.25, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

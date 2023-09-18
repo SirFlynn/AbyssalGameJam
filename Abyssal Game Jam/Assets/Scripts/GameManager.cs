@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject priest;
     public GameObject priestMetre;
+    PriestScript priestScript;
     int spawnLevel = 13;
     bool isPriestThere = false;
 
@@ -20,33 +21,38 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         characters = FindObjectsByType<CharacterData>(FindObjectsSortMode.None);
+        priestScript = priest.GetComponentInChildren<PriestScript>();
     }
 
     private void Update()
     {
         if (!isGameOver)
         {
-            if (!isPriestThere)
+            int value = 0;
+            int leave = 0;
+
+            foreach (CharacterData cd in characters)
             {
-                int value = 0;
-                int leave = 0;
-                foreach (CharacterData cd in characters)
-                {
-                    value += cd.fearMeter;
-                    leave += cd.leaveValue;
-                }
+                value += cd.fearMeter;
+                leave += cd.leaveValue;
+            }
+            value += priestScript.fearMeter;
+            leave += priestScript.leaveValue;
+
+            if (!isPriestThere)
+            {                
                 if (value >= spawnLevel)
                 {
                     SpawnPriest();
                     isPriestThere = true;
                     priestMetre.SetActive(true);
-                }
+                }                
+            }
 
-                if (value == leave)
-                {
-                    playerWin = true;
-                    GameOver(true);
-                }
+            if (value == leave)
+            {
+                playerWin = true;
+                GameOver(true);
             }
         }
         else

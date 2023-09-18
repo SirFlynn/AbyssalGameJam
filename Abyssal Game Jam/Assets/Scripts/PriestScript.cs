@@ -37,55 +37,66 @@ public class PriestScript : CharacterData
         //if see possess object, scared then move to exorcise 
         //has a raidance that affects haunting metre
 
-        Vector2 enemyToPlayerVector = player.gameObject.transform.position - transform.position;
-        directionToPlayer = enemyToPlayerVector.normalized;
-
-        if (enemyToPlayerVector.magnitude <= holyRadiance)
+        if (fearMeter != leaveValue)
         {
-            player.RemoveFromHaunt(1);
-        }
+            Vector2 enemyToPlayerVector = player.gameObject.transform.position - transform.position;
+            directionToPlayer = enemyToPlayerVector.normalized;
 
-        if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
-        {
-            fearMeter += 1;
-            float FearValue = (float)fearMeter / (float)leaveValue;
-            fearMetreGUI.SetBars(FearValue);
-            isScared = true;
-
-            characterMovement.MakeTarget(player.possessedObject);
-        }        
-
-        if(isScared && Vector2.Distance(player.possessedObject.transform.position, transform.position) <= 1)
-        {
-            isExorcising = true;
-            characterMovement.enabled = false;
-        }
-
-        if (isExorcising)
-        {
-            //Timer
-            if (exorcising > 0)
+            if (enemyToPlayerVector.magnitude <= holyRadiance)
             {
-                exorcising -= Time.deltaTime;
-                if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting)
+                player.RemoveFromHaunt(1);
+            }
+
+            if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting && isScared == false)
+            {
+                fearMeter += 1;
+                float FearValue = (float)fearMeter / (float)leaveValue;
+                fearMetreGUI.SetBars(FearValue);
+                isScared = true;
+
+                characterMovement.MakeTarget(player.possessedObject);
+            }
+
+            if (isScared && Vector2.Distance(player.possessedObject.transform.position, transform.position) <= 1)
+            {
+                isExorcising = true;
+                characterMovement.enabled = false;
+            }
+
+            if (isExorcising)
+            {
+                //Timer
+                if (exorcising > 0)
                 {
-                    player.RemoveFromHaunt(1);
+                    exorcising -= Time.deltaTime;
+                    if (enemyToPlayerVector.magnitude <= playerAwarenessDistance && player.isHaunting)
+                    {
+                        player.RemoveFromHaunt(1);
+                    }
+                }
+                else
+                {
+                    characterMovement.ResetTarget();
+                    exorcising = timeExorcising;
+                    isScared = false;
+                    characterMovement.enabled = true;
                 }
             }
-            else
+
+            if (characterMovement.targets.Count == 0)
             {
-                characterMovement.ResetTarget();
-                exorcising = timeExorcising;
-                isScared = false;
-                characterMovement.enabled = true;
+                GameManager.Instance.GameOver(true);
             }
+
+        }
+        else
+        {
+            //turns off GUI for fear metre
+            fearMetreGUI.gameObject.SetActive(false);
+            characterMovement.MakeTarget(leavepointObject);
         }
 
-        if (characterMovement.targets.Count == 0)
-        {
-            GameManager.Instance.GameOver(true);   
-        }
-        
+
     }
 
     public void PlaceRelic()
