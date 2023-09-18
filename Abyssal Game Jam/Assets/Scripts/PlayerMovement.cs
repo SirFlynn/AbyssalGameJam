@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [System.NonSerialized] public GameObject possessedObject;
     [System.NonSerialized] public bool isPossessing = false;
+    [System.NonSerialized] public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +46,14 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.position = possessedObject.transform.position;
             isPossessing = true;
             rb.velocity = Vector2.zero;
+            animator = possessedObject.GetComponent<Animator>();
+
         }
         else if (Input.GetKey(KeyCode.Space) && isPossessing == true)
         {
             spriteRenderer.enabled = true;
             isPossessing = false;
+            animator = null;
         }
 
         if (isPossessing)
