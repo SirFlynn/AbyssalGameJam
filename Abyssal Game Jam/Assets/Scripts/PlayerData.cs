@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     PlayerMovement playerMovement;
+    public MetresScript metresScript;
 
-    [System.NonSerialized] public int hauntingMeter;
-    float cooldownTimer;
+    public int hauntingMeter;
+    int hauntingMax = 10;
+    public float cooldownTimer = 10;
+    float timer;
     [System.NonSerialized] public bool isHaunting = false;
     [System.NonSerialized] public GameObject possessedObject;
 
@@ -15,6 +18,7 @@ public class PlayerData : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        timer = cooldownTimer;
     }
 
     // Update is called once per frame
@@ -22,11 +26,19 @@ public class PlayerData : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && playerMovement.isPossessing)
         {
-            isHaunting = true;
+            isHaunting = true; 
+            if (playerMovement.animator != null)
+            {
+                playerMovement.animator.SetBool("IsHaunt", true);
+            }
         }
         else
         {
             isHaunting = false;
+            if (playerMovement.animator != null)
+            {
+                playerMovement.animator.SetBool("IsHaunt", false);
+            }
         }
 
         if (playerMovement.isPossessing)
@@ -37,15 +49,38 @@ public class PlayerData : MonoBehaviour
         {
             possessedObject = null;
         }
+
+        //cooldown timer
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            AddToHaunt(1);
+            cooldownTimer = timer;
+        }
+
     }
 
     public void AddToHaunt(int value)
     {
-        hauntingMeter += value;
+        if (hauntingMeter < hauntingMax)
+        {
+            hauntingMeter += value;
+            float hauntValue = (float)hauntingMeter / (float)hauntingMax;
+            metresScript.SetBars(hauntValue);
+        }
+        
     }
 
     public void RemoveFromHaunt(int value)
     {
-        hauntingMeter -= value;
+        if (hauntingMeter > 0)
+        {
+            hauntingMeter -= value;
+            float hauntValue = (float)hauntingMeter / (float)hauntingMax;
+            metresScript.SetBars(hauntValue);
+        }
     }
 }

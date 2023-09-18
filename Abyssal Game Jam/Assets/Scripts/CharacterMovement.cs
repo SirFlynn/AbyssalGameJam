@@ -95,6 +95,11 @@ public class CharacterMovement : MonoBehaviour
                 }                
             }
 
+            else if (characterData.fearMeter == characterData.leaveValue)
+            {
+                gameObject.SetActive(false);
+            }
+
             else
             {
                 GoToNextSpot();
@@ -116,7 +121,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void GoToNextSpot()
     {
-        if (targets.Count != 0)
+        if (targets.Count > 1)
         {
             GameObject temp = targets[0];
             for (int i = 0; i < targets.Count - 1; i++)
@@ -130,9 +135,19 @@ public class CharacterMovement : MonoBehaviour
         
     }
 
+    public void RemoveAllTargets()
+    {
+        targets.Clear();
+    }
+
     void SetAgentPosition()
     {
-        agent.SetDestination(currentTarget);
+        if (agent.isActiveAndEnabled)
+        {
+            agent.SetDestination(currentTarget);
+        }        
     }
+
+    
 
 }

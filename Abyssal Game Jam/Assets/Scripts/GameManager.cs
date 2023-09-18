@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameObject priest;
+    public GameObject priestMetre;
+    PriestScript priestScript;
     int spawnLevel = 13;
     bool isPriestThere = false;
 
@@ -19,23 +21,51 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         characters = FindObjectsByType<CharacterData>(FindObjectsSortMode.None);
+        priestScript = priest.GetComponentInChildren<PriestScript>();
     }
 
     private void Update()
     {
-        
-        if (!isPriestThere)
+        if (!isGameOver)
         {
             int value = 0;
+            int leave = 0;
+
             foreach (CharacterData cd in characters)
             {
                 value += cd.fearMeter;
+                leave += cd.leaveValue;
             }
-            if (value >= spawnLevel)
+            value += priestScript.fearMeter;
+            leave += priestScript.leaveValue;
+
+            if (!isPriestThere)
+            {                
+                if (value >= spawnLevel)
+                {
+                    SpawnPriest();
+                    isPriestThere = true;
+                    priestMetre.SetActive(true);
+                }                
+            }
+
+            if (value == leave)
             {
-                SpawnPriest();
-                isPriestThere = true;
+                playerWin = true;
+                GameOver(true);
             }
+        }
+        else
+        {
+            if (playerWin)
+            {
+                MenuManager.instance.SetState(MenuState.WinScreen);
+            }
+            else
+            {
+                MenuManager.instance.SetState(MenuState.LoseScreen);
+            }
+            
         }
         
     }
