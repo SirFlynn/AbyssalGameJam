@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip possessSFX;
     [SerializeField] AudioClip holySFX;
     [SerializeField] AudioClip runAwaySFX;
+    [SerializeField] AudioClip grandPianoSFX;
+    [SerializeField] AudioClip tap;
 
     private void Awake()
     {
@@ -78,4 +80,15 @@ public class AudioManager : MonoBehaviour
         SFXAudio.clip = runAwaySFX;
         SFXAudio.Play();
     }
+    public void PlayGrandPiano()
+    {
+        SFXAudio.clip = grandPianoSFX;
+        SFXAudio.Play();
+    }
+    public void PlayTap()
+    {
+        SFXAudio.clip = tap;
+        SFXAudio.Play();
+    }
+
 }

@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed2a7cf3cd83444aadcd3d4c574ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  metresScript: {fileID: 0}
+  hauntingMeter: 0
+  cooldownTimer: 10
 --- !u!50 &1709118429096758744
 Rigidbody2D:
   serializedVersion: 4
