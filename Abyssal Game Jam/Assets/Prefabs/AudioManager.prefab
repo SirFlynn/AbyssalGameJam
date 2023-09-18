@@ -54,8 +54,8 @@ MonoBehaviour:
   maxVolDB: 0
   mainMenuMusic: {fileID: 8300000, guid: ae96878e135d0824fa1012a0e905951c, type: 3}
   gameplayMusic: {fileID: 8300000, guid: ae96878e135d0824fa1012a0e905951c, type: 3}
-  gameButton_1: {fileID: 0}
-  gameButton_2: {fileID: 0}
+  gameButton_1: {fileID: 8300000, guid: 79eacb79a756eeb428d99346cf0fd6c4, type: 3}
+  gameButton_2: {fileID: 8300000, guid: b001179eb38b0aa4db6a4181be64e77c, type: 3}
 --- !u!82 &4478187376599081742
 AudioSource:
   m_ObjectHideFlags: 0
