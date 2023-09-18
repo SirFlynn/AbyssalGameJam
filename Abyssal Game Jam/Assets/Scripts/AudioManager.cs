@@ -22,6 +22,10 @@ public class AudioManager : MonoBehaviour
     [Space]
     [SerializeField] AudioClip gameButton_1;
     [SerializeField] AudioClip gameButton_2;
+    [Space]
+    [SerializeField] AudioClip possessSFX;
+    [SerializeField] AudioClip holySFX;
+    [SerializeField] AudioClip runAwaySFX;
 
     private void Awake()
     {
@@ -55,6 +59,23 @@ public class AudioManager : MonoBehaviour
     public void PlayGameButton_2SFX()
     {
         SFXAudio.clip = gameButton_2;
+        SFXAudio.Play();
+    }
+    public void PlayPossessing()
+    {
+        SFXAudio.clip = possessSFX;
+        SFXAudio.Play();
+    }
+
+    public void PlayHolySFX()
+    {
+        SFXAudio.clip = holySFX;
+        SFXAudio.Play();
+    }
+
+    public void PlayRunAway()
+    {
+        SFXAudio.clip = runAwaySFX;
         SFXAudio.Play();
     }
 }

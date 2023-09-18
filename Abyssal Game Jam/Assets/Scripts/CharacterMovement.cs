@@ -43,13 +43,29 @@ public class CharacterMovement : MonoBehaviour
         {
             agent.speed = orignalSpeed;
         }
-       
+
+        RotateTowardsTarget();
         SetTargetPosition();
         SetAgentPosition();
     }
 
+    void RotateTowardsTarget()
+    {
+        if(agent.destination == Vector3.zero)
+        {
+            return;
+        }
+
+        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, agent.destination);
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, orignalSpeed * Time.deltaTime);
+
+        transform.rotation = rotation;
+    }
+
     void SetTargetPosition()
     {
+        
+
         Vector2 currentPos = transform.position;
         Vector2 targetPos = new Vector2((int)currentTarget.x, (int)currentTarget.y) ;
 
